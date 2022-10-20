@@ -147,7 +147,8 @@ const App = () => (
             >
             <Resource name="modiriat" icon={AddBoxOutlinedIcon} options={{ "label": "پنل کاربری", "isMenuParent": true }} />    
             <Resource name="PMWorks/WorkRequest" icon={ArrowLeftOutlinedIcon} options={{ label: 'درخواست کار', "menuParent": "modiriat" }} list={WorkRequestList} edit={WorkRequestEdit} create={WorkRequestCreate} show={WorkRequestShow} />
-            <Resource name="PMWorks/WorkOrder" icon={ArrowLeftOutlinedIcon} options={{ label: 'دستور کار', "menuParent": "modiriat" }} count= {WorkOrderCount} list={WorkOrderList} edit={WorkOrderEdit} show={WorkOrderShow} />
+            <Resource name="PMWorks/WorkOrder" icon={ArrowLeftOutlinedIcon} options={{ label: 'دستور کار', "menuParent": "modiriat" }}  list={WorkOrderList} edit={WorkOrderEdit} show={WorkOrderShow} />
+            <Resource name="PMWorks/DepWORep" />
             <Resource name="yadak" icon={SettingsInputSvideoOutlinedIcon} options={{ "label": "قطعات یدکی", "isMenuParent": true }} />
             <Resource name="PMWorks/SparePart" icon={ArrowLeftOutlinedIcon} options={{ label: 'قطعات یدکی', "menuParent": "yadak" }} list={SparePartList} edit={SparePartEdit} create={SparePartCreate} show={SparePartShow}/>
             <Resource name="PMWorks/SparePartCategory" icon={ArrowLeftOutlinedIcon} options={{ label: 'خانواده قطعات', "menuParent": "yadak"}} list={SparePartCategoryList} edit={SparePartCategoryEdit} create={SparePartCategoryCreate} show={SparePartCategoryShow}/>
