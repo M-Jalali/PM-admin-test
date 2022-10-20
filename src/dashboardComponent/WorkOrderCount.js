@@ -1,36 +1,21 @@
 import * as React  from 'react';
-import { useGetList , useGetMany  } from 'react-admin';
+import { useGetList , Loading  } from 'react-admin';
 import CardWithIcon from './CardWithIcon';
 import { Card } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 
 
-//const GetListCount = (props) => {
-/*const { data } = useGetList(
-    "/PMWorks/WorkOrder",
-{ field: "WorkOrderID", order: "ASC" } ,
-{filter: { StatusID__OpCl: '1' }},
-).then(response => console.log(response));*/
 
-
-/*useGetMany ( "/PMWorks/WorkOrder", { StatusID__OpCl: '1'})
-.then(response => console.log(response));
-};*/
-
-/*const useStyles = makeStyles({
-    CardWithIcon: {
-      maxWidth: 500
-    ,margin: auto
-    ,
-    },});
-  */
     const WorkOrderTotalOp = () => {
-        const { data, total } = useGetList('PMWorks/WorkOrder', 
-            { page: 1, perPage: 5 },
+        
+        const {total, loading, error } = useGetList('PMWorks/WorkOrder', 
+            { page: 1, perPage: 1 },
             { field: 'title', order: 'ASC' },
             { StatusID__OpCl: '1' },
         );
+        if (loading) { return <Loading />; }
+        if (error) { return <p>ERROR</p>; }
         return(<CardWithIcon 
             to="/PMWorks/WorkOrder/?StatusID__OpCl=1"
             icon={WorkIcon}
@@ -39,11 +24,13 @@ import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
             />); };
 
             const WorkOrderTotalOpPM = () => {
-                const { data, total } = useGetList('PMWorks/WorkOrder', 
-                    { page: 1, perPage: 5 },
+                
+                const {total, loading} = useGetList('PMWorks/WorkOrder', 
+                    { page: 1, perPage: 1 },
                     { field: 'title', order: 'ASC' },
                     { StatusID__OpCl: '1', WorkOrderType: '1' },
                 );
+                if (loading) { return <Loading />; }
                 return(<CardWithIcon 
                     to="/PMWorks/WorkOrder/?StatusID__OpCl=1"
                     icon={WorkIcon}
@@ -52,11 +39,12 @@ import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
                     />); };
                     
             const WorkOrderTotalOpWR = () => {
-                 const { data, total } = useGetList('PMWorks/WorkOrder', 
-                    { page: 1, perPage: 5 },
+                 const {total, loading } = useGetList('PMWorks/WorkOrder', 
+                    { page: 1, perPage: 1 },
                     { field: 'title', order: 'ASC' },
                     { StatusID__OpCl: '1', WorkOrderType: '0' },
                 );
+                if (loading) { return <Loading />; }
                 return(<CardWithIcon 
                     to="/PMWorks/WorkOrder/?StatusID__OpCl=1"
                     icon={WorkIcon}
@@ -65,18 +53,29 @@ import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
                     />); };        
 
             const WorkRequestTotalOp = () => {
-                const { data, total } = useGetList('PMWorks/WorkRequest', 
-                    { page: 1, perPage: 5 },
+                const {total, loading } = useGetList('PMWorks/WorkRequest', 
+                    { page: 1, perPage: 1 },
                     { field: 'title', order: 'ASC' },
                     { StatusID__OpCl: '1' },
                 );
+                if (loading) { return <Loading />; }
                 return(<CardWithIcon 
                     to="PMWorks/WorkRequest"
                     icon={WorkOutlineOutlinedIcon}
                     title={"درخواست کار باز"}
                     subtitle={total}
                     />); };        
+                  /*  const DepartmentCreate = props => {
+
+                        const refresh = useRefresh();
                     
+                        const onClick = () => {
+                            refresh();
+                        };
+                    return(<button onClick={onClick}>felean</button>
+                    );
+                    };
+*/
 
 const WorkOrderCount = (props) => {
 
